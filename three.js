@@ -53,7 +53,7 @@ function checkKeyPress(key){
 
 
 function planet(m,x,y,z,dx,dy,dz,k1,k2,name,color,g,radius,rotx,roty,rotz,textu) {
-    this.texture = new THREE.TextureLoader().load( textu );
+    //this.texture = new THREE.TextureLoader().load( textu );
     this.g = g; // universal gravitational constant 
     this.m = m; // in kg
     this.mMin = m;
@@ -75,8 +75,10 @@ function planet(m,x,y,z,dx,dy,dz,k1,k2,name,color,g,radius,rotx,roty,rotz,textu)
     this.name = name;
     this.color = color;
     this.draw = function() {
-        var geometry = new THREE.SphereGeometry(this.radius,this.radius,this.radius);
-        var material = new THREE.MeshBasicMaterial( {map: this.texture} );
+        var geometry = new THREE.BoxGeometry(this.radius,this.radius,this.radius);
+        var material = new THREE.MeshBasicMaterial({color:this.color});
+        //var geometry = new THREE.SphereGeometry(this.radius,this.radius,this.radius);
+        //var material = new THREE.MeshBasicMaterial( {map: this.texture} );
         this.sphere = new THREE.Mesh(geometry,material);
         this.sphere.position.x = this.sx;
         this.sphere.position.y = this.sy;
@@ -173,15 +175,15 @@ function sistema(h,planetas){
 var k1 = 1.496e11;
 var k2 = 1.496e11/(24*3600);
 var sol = new planet(1.9885*10**30,0,0,0,0,0,0,k1,k2,'Sun','yellow',6.67*10**-11,20,0,0,0,'https://github.com/hollebenthiago/test/blob/master/sunmapthumb.jpg');
-var mercury = new planet(0.330*10**24,-2.503321047836e-1,1.873217481656e-1,1.260230112145e-1,-2.438808424736E-02,-1.850224608274E-02,-7.353811537540E-03,k1,k2,'Mercury','red',6.67*10**-11,5,0.1,0.1,0.1,'https://github.com/hollebenthiago/test/blob/master/mercurymapthumb.jpg')
-var venus = new planet(4.87*10**24,1.747780055994E-02,-6.624210296743E-01,-2.991203277122E-01,+2.008547034175E-02,+8.365454832702E-04,-8.947888514893E-04,k1,k2,'Venus','green',6.67*10**-11,5,0.1,0.1,0.1,'https://github.com/hollebenthiago/test/blob/master/venusmapthumb.jpg');
-var earth = new planet(5.97*10**24+7.342e22,-9.091916173950E-01,3.592925969244E-01,1.557729610506E-01,-7.085843239142E-03,-1.455634327653E-02,-6.310912842359E-03,k1,k2,'Earth','blue',6.67*10**-11,8,24,24,24,'https://github.com/hollebenthiago/test/blob/master/earthmapthumb.jpg');
-var mars = new planet(0.642*10**24,+1.203018828754E+00,7.270712989688E-01,3.009561427569E-01,-7.124453943885E-03,+1.166307407692E-02,+5.542098698449E-03,k1,k2,'Mars','brown',6.67*10**-11,5,0.1,0.1,0.1,'https://github.com/hollebenthiago/test/blob/master/mars_thumbnail.jpg');
-var jupiter = new planet(1898*10**24,+3.733076999471E+00,3.052424824299E+00,1.217426663570E+00,-5.086540617947E-03,+5.493643783389E-03,+2.478685100749E-03,k1,k2,'Jupiter','lightblue',6.67*10**-11,10,0.1,0.1,0.1,'https://github.com/hollebenthiago/test/blob/master/jupitermapthumb.jpg');
-var saturn = new planet(568*10**24,+6.164433062913E+00,+6.366775402981E+00,2.364531109847E+00,-4.426823593779E-03,+3.394060157503E-03,+1.592261423092E-03,k1,k2,'Saturn','indigo',6.67*10**-11,5,0.1,0.1,0.1,'https://github.com/hollebenthiago/test/blob/master/saturnmapthumb.jpg');
-var uranus = new planet(86.8*10**24,+1.457964661868E+01,-1.236891078519E+01,-5.623617280033E+0,+2.647505630327E-03,+2.487457379099E-03,+1.052000252243E-03,k1,k2,'Uranus','orange',6.67*10**-11,5,0.1,0.1,0.1,'https://github.com/hollebenthiago/test/blob/master/uranusmapthumb.jpg');
-var neptune = new planet(102*10**24,+1.695491139909E+01,-2.288713988623E+01,-9.789921035251E+00,+2.568651772461E-03,+1.681832388267E-03,+6.245613982833E-04,k1,k2,'Neptune','cyan',6.67*10**-11,5,0.1,0.1,0.1,'https://github.com/hollebenthiago/test/blob/master/neptunemapthumb.jpg');
-var pluto = new planet(0.0146*10**24,-9.707098450131E+00,-2.804098175319E+01,-5.823808919246E+00,+3.034112963576E-03,-1.111317562971E-03,-1.261841468083E-03,k1,k2,'Pluto','lightgreen',6.67*10**-11,5,0.1,0.1,0.1,'https://github.com/hollebenthiago/test/blob/master/plutomapthumb.jpg');
+var mercury = new planet(0.330*10**24,-2.503321047836e-1,1.873217481656e-1,1.260230112145e-1,-2.438808424736E-02,-1.850224608274E-02,-7.353811537540E-03,k1,k2,'Mercury','red',6.67*10**-11,5,1407.6/H,1407.6/H,1407.6/H,'https://github.com/hollebenthiago/test/blob/master/mercurymapthumb.jpg')
+var venus = new planet(4.87*10**24,1.747780055994E-02,-6.624210296743E-01,-2.991203277122E-01,+2.008547034175E-02,+8.365454832702E-04,-8.947888514893E-04,k1,k2,'Venus','green',6.67*10**-11,5,-5832.5/H,-5832.5/H,-5832.5/H,'https://github.com/hollebenthiago/test/blob/master/venusmapthumb.jpg');
+var earth = new planet(5.97*10**24+7.342e22,-9.091916173950E-01,3.592925969244E-01,1.557729610506E-01,-7.085843239142E-03,-1.455634327653E-02,-6.310912842359E-03,k1,k2,'Earth','blue',6.67*10**-11,8,24/H,24/H,24/H,'https://github.com/hollebenthiago/test/blob/master/earthmapthumb.jpg');
+var mars = new planet(0.642*10**24,+1.203018828754E+00,7.270712989688E-01,3.009561427569E-01,-7.124453943885E-03,+1.166307407692E-02,+5.542098698449E-03,k1,k2,'Mars','brown',6.67*10**-11,5,24.6/H,24.6/H,24.6/H,'https://github.com/hollebenthiago/test/blob/master/mars_thumbnail.jpg');
+var jupiter = new planet(1898*10**24,+3.733076999471E+00,3.052424824299E+00,1.217426663570E+00,-5.086540617947E-03,+5.493643783389E-03,+2.478685100749E-03,k1,k2,'Jupiter','lightblue',6.67*10**-11,10,9.9/H,9.9/H,9.9/H,'https://github.com/hollebenthiago/test/blob/master/jupitermapthumb.jpg');
+var saturn = new planet(568*10**24,+6.164433062913E+00,+6.366775402981E+00,2.364531109847E+00,-4.426823593779E-03,+3.394060157503E-03,+1.592261423092E-03,k1,k2,'Saturn','indigo',6.67*10**-11,5,10.7/H,10.7/H,10.7/H,'https://github.com/hollebenthiago/test/blob/master/saturnmapthumb.jpg');
+var uranus = new planet(86.8*10**24,+1.457964661868E+01,-1.236891078519E+01,-5.623617280033E+0,+2.647505630327E-03,+2.487457379099E-03,+1.052000252243E-03,k1,k2,'Uranus','orange',6.67*10**-11,5,-17.2/H,-17.2/H,-17.2/H,'https://github.com/hollebenthiago/test/blob/master/uranusmapthumb.jpg');
+var neptune = new planet(102*10**24,+1.695491139909E+01,-2.288713988623E+01,-9.789921035251E+00,+2.568651772461E-03,+1.681832388267E-03,+6.245613982833E-04,k1,k2,'Neptune','cyan',6.67*10**-11,5,16.1/H,16.1/H,16.1/H,'https://github.com/hollebenthiago/test/blob/master/neptunemapthumb.jpg');
+var pluto = new planet(0.0146*10**24,-9.707098450131E+00,-2.804098175319E+01,-5.823808919246E+00,+3.034112963576E-03,-1.111317562971E-03,-1.261841468083E-03,k1,k2,'Pluto','lightgreen',6.67*10**-11,5,-153.3/H,-153.3/H,-153.3/H,'https://github.com/hollebenthiago/test/blob/master/plutomapthumb.jpg');
 
 //var sol = new planet(1.9885*10**30,0,0,0,0,0,0,k1,k2,'Sun','yellow',6.67*10**-11,20,0,0,0);
 //var mercury = new planet(0.330*10**24,46*10**9,0,0,0,58.98*10**3,0,k1,k2,'Mercury','red',6.67*10**-11,5,0.01,0.01,0.01);
@@ -204,6 +206,7 @@ var animate = function () {
         esferas.planetas[i].sphere.position.y = esferas.planetas[i].sy;
         esferas.planetas[i].sphere.position.z = esferas.planetas[i].sz; 
     }
+    console.log('entro');
     esferas.verlet();
 	renderer.render( scene, camera );
 };
