@@ -10,7 +10,7 @@ camera.position.z = camposz;
 camera.position.y = camposy;
 camera.position.x = camposx;
 var H = window.prompt('tell me the step (in hours) (number)');
-var localserver = window.prompt('are you running this in a local server with the specific textures? (yes or no)');
+//var localserver = window.prompt('are you running this in a local server with the specific textures? (yes or no)');
 var ax = -3e11; //-1150,1150
 var bx = 3e11;
 var ay = -3e11; //-700,700
@@ -75,14 +75,14 @@ function planet(m,x,y,z,dx,dy,dz,k1,k2,name,color,g,radius,rotx,roty,rotz,textu,
     this.color = color;
     this.draw = function() {
         
-        if (localserver == 'no'){
-        var geometry = new THREE.BoxGeometry(this.radius,this.radius,this.radius);
-        var material = new THREE.MeshBasicMaterial({color:this.color});
-        }
-        if (localserver == 'yes'){
-            var geometry = new THREE.SphereGeometry(this.radius,10*this.radius,10*this.radius);
-            var material = new THREE.MeshBasicMaterial( {map: this.texture} );
-        }
+        //if (localserver == 'no'){
+        //var geometry = new THREE.BoxGeometry(this.radius,this.radius,this.radius);
+        //var material = new THREE.MeshBasicMaterial({color:this.color});
+        //}
+        //if (localserver == 'yes'){
+        var geometry = new THREE.SphereGeometry(this.radius,10*this.radius,10*this.radius);
+        var material = new THREE.MeshBasicMaterial( {map: this.texture} );
+        //}
         this.sphere = new THREE.Mesh(geometry,material);
         this.sphere.position.x = this.sx;
         this.sphere.position.y = this.sy;
