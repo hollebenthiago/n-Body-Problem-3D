@@ -49,9 +49,9 @@ function checkKeyPress(key){
 
 
 function planet(m,x,y,z,dx,dy,dz,k1,k2,name,color,g,radius,rotx,roty,rotz,textu,period) {
-    if (localserver == 'yes'){
-        this.texture = new THREE.TextureLoader().load( textu );
-    }
+    //if (localserver == 'yes'){
+    this.texture = new THREE.TextureLoader().load( textu );
+    //}
     this.period = period;
     this.g = g; // universal gravitational constant 
     this.m = m; // in kg
